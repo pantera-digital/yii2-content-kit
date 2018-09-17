@@ -1,0 +1,9 @@
+{
+  "name": "pantera-digital/yii2-content-kit",
+  "type": "yii2-extension",
+  "autoload": {
+    "psr-4": {
+      "pantera\\content\\": ""
+    }
+  }
+}
