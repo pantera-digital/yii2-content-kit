@@ -43,6 +43,28 @@ class PageController extends Controller
         ];
     }
 
+    public function actions()
+    {
+        return [
+            'file-upload' => [
+                'class' => \pantera\media\actions\kartik\MediaUploadActionKartik::className(),
+                'model' => function () {
+                    if (Yii::$app->request->get('id')) {
+                        return $this->findModel(Yii::$app->request->get('id'));
+                    } else {
+                        return new ContentPage();
+                    }
+                }
+            ],
+            'file-delete' => [
+                'class' => \pantera\media\actions\kartik\MediaDeleteActionKartik::className(),
+                'model' => function () {
+                    return \pantera\media\models\Media::findOne(Yii::$app->request->post('id'));
+                }
+            ],
+        ];
+    }
+
     /**
      * Lists all ContentPage models.
      * @return mixed

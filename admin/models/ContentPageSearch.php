@@ -2,10 +2,9 @@
 
 namespace pantera\content\admin\models;
 
-use Yii;
+use pantera\content\models\ContentPage;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use pantera\content\models\ContentPage;
 
 /**
  * ContentPageSearch represents the model behind the search form of `pantera\content\models\ContentPage`.
@@ -47,6 +46,9 @@ class ContentPageSearch extends ContentPage
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['id' => SORT_DESC],
+            ],
         ]);
 
         $this->load($params);

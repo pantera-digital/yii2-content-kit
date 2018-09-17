@@ -2,6 +2,8 @@
 
 namespace pantera\content\models;
 
+use pantera\media\behaviors\MediaUploadBehavior;
+use pantera\media\models\Media;
 use pantera\seo\behaviors\SeoFields;
 
 /**
@@ -15,6 +17,7 @@ use pantera\seo\behaviors\SeoFields;
  * @property string $created_at
  *
  * @property ContentType $type
+ * @property Media $media
  */
 class ContentPage extends \yii\db\ActiveRecord
 {
@@ -40,6 +43,12 @@ class ContentPage extends \yii\db\ActiveRecord
         return [
             [
                 'class' => SeoFields::className(),
+            ],
+            [
+                'class' => MediaUploadBehavior::className(),
+                'buckets' => [
+                    'media' => [],
+                ],
             ],
         ];
     }

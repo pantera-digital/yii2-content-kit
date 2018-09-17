@@ -1,6 +1,7 @@
 <?php
 
 use pantera\content\models\ContentType;
+use pantera\media\widgets\innostudio\MediaUploadWidgetInnostudio;
 use pantera\seo\widgets\SeoForm;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -22,12 +23,22 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'status')->checkbox() ?>
+    <?= MediaUploadWidgetInnostudio::widget([
+        'model' => $model,
+        'bucket' => 'media',
+        'urlUpload' => ['file-upload', 'id' => $model->id],
+        'urlDelete' => ['file-delete'],
+        'pluginOptions' => [
+            'limit' => 1,
+        ],
+    ]) ?>
 
     <?= SeoForm::widget([
         'model' => $model,
         'form' => $form,
     ]) ?>
+
+    <?= $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
