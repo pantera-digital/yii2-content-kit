@@ -4,9 +4,9 @@
 
 Модуль зависит от `pantera-digital/yii2-media` и `pantera-digital/yii2-seo`, подробнее о них можно узнать здесь:
 
-https://packagist.org/packages/pantera-digital/yii2-media
+https://github.com/pantera-digital/yii2-media
 
-https://packagist.org/packages/pantera-digital/yii2-seo
+https://github.com/pantera-digital/yii2-seo
 
 
 ### Установка модуля
