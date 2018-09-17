@@ -2,6 +2,8 @@
 
 namespace pantera\content\models;
 
+use pantera\seo\behaviors\SeoFields;
+
 /**
  * This is the model class for table "content_page".
  *
@@ -30,6 +32,15 @@ class ContentPage extends \yii\db\ActiveRecord
         return [
             0 => 'Черновик',
             1 => 'Опубликовано',
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SeoFields::className(),
+            ],
         ];
     }
 
