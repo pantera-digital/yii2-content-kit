@@ -8,6 +8,7 @@ use pantera\content\models\ContentType;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -120,9 +121,18 @@ class TypeController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $model = $this->findModel($id);
+        if ($model->pages) {
+            return $this->asJson([
+                'status' => false,
+                'message' => 'Нельзя удалить тип если у него есть страницы',
+            ]);
+        }
+        $model->delete();
+        return $this->asJson([
+            'status' => true,
+            'url' => Url::to(['index']),
+        ]);
     }
 
     /**

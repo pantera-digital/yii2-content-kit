@@ -19,7 +19,7 @@ class m180917_063605_create_content_page_table extends Migration
             'id' => $this->primaryKey(),
             'title' => $this->string()->notNull(),
             'body' => $this->text()->null(),
-            'type_id' => $this->integer()->notNull(),
+            'type_id' => $this->integer()->null(),
             'status' => $this->boolean()->notNull()->defaultValue(1),
             'created_at' => $this->timestamp()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
         ]);
@@ -38,6 +38,7 @@ class m180917_063605_create_content_page_table extends Migration
             'type_id',
             '{{%content_type}}',
             'id',
+            'RESTRICT',
             'CASCADE'
         );
     }

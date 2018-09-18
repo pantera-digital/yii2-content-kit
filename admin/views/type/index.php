@@ -27,7 +27,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'key',
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'buttons' => [
+                    'delete' => function ($url, $model, $key) {
+                        return Html::a(Html::tag('span', null, [
+                            'class' => 'glyphicon glyphicon-trash',
+                        ]), $url, [
+                            'class' => 'content-ajax-delete',
+                        ]);
+                    },
+                ],
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

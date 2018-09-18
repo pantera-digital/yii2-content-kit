@@ -11,7 +11,7 @@ use yii\helpers\ArrayHelper;
  * @property string $name
  * @property string $key
  *
- * @property ContentPage[] $contentPages
+ * @property ContentPage[] $pages
  */
 class ContentType extends \yii\db\ActiveRecord
 {
@@ -63,7 +63,7 @@ class ContentType extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getContentPages()
+    public function getPages()
     {
         return $this->hasMany(ContentPage::className(), ['type_id' => 'id']);
     }

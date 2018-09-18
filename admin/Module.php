@@ -8,10 +8,18 @@
 
 namespace pantera\content\admin;
 
+use Yii;
+
 class Module extends \yii\base\Module
 {
     /* @var array Массив ролей которым доступна админка */
     public $permissions = ['@'];
+
+    public function init()
+    {
+        parent::init();
+        ModuleAsset::register(Yii::$app->view);
+    }
 
     public function getMenuItems()
     {
