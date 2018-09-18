@@ -34,7 +34,11 @@ class ViewController extends Controller
         try {
             return $this->render('index-' . $model->id, $params);
         } catch (ViewNotFoundException $e) {
-            return $this->render('index', $params);
+            try {
+                return $this->render('index-' . $model->slug, $params);
+            } catch (ViewNotFoundException $e) {
+                return $this->render('index', $params);
+            }
         }
     }
 
