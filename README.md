@@ -74,3 +74,22 @@ php yii migrate
     ],
 ],
 ```
+
+### Переопределение вью страницы
+в конфиг приложения добавить
+```
+'components' => [
+    'view' => [
+        'class' => 'yii\web\View',
+        'theme' => [
+            'pathMap' => [
+                '@pantera/content/views/view' => '@frontend/views/content/view',
+            ],
+        ],
+    ],
+],
+```
+
+Новый файл должен называть index-{id} или index-{slug}
+* -id идентификатор записи
+* -slug актуальный алиас записи
