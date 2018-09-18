@@ -23,6 +23,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= \pantera\seo\widgets\SlugForm::widget([
+        'form' => $form,
+        'model' => $model,
+    ]) ?>
+
     <?= $form->field($model, 'body')->widget(CKEditor::className(), [
         'options' => ['rows' => 6],
         'preset' => 'full',

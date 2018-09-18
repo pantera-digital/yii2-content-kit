@@ -5,7 +5,9 @@ namespace pantera\content\models;
 use pantera\media\behaviors\MediaUploadBehavior;
 use pantera\media\models\Media;
 use pantera\seo\behaviors\SeoFields;
+use pantera\seo\behaviors\SlugBehavior;
 use pantera\seo\models\Seo;
+use pantera\seo\validators\SlugValidator;
 
 /**
  * This is the model class for table "content_page".
@@ -23,6 +25,8 @@ use pantera\seo\models\Seo;
  */
 class ContentPage extends \yii\db\ActiveRecord
 {
+    public $slug;
+
     /* @var int Идентификатор активного состояния */
     const STATUS_ACTIVE = 1;
     /* @var int Идентификатор черновика */
@@ -40,6 +44,15 @@ class ContentPage extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * Получить текуший статус записи
+     * @return string
+     */
+    public function getCurrentStatus(): string
+    {
+        return $this->getStatusList()[$this->status];
+    }
+
     public function behaviors()
     {
         return [
@@ -51,6 +64,11 @@ class ContentPage extends \yii\db\ActiveRecord
                 'buckets' => [
                     'media' => [],
                 ],
+            ],
+            [
+                'class' => SlugBehavior::className(),
+                'attribute' => 'title',
+                'slugAttribute' => 'slug',
             ],
         ];
     }
@@ -77,6 +95,7 @@ class ContentPage extends \yii\db\ActiveRecord
             [['created_at'], 'safe'],
             [['title'], 'string', 'max' => 255],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => ContentType::className(), 'targetAttribute' => ['type_id' => 'id']],
+            [['slug'], SlugValidator::className(), 'skipOnEmpty' => false],
         ];
     }
 

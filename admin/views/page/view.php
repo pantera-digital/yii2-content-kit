@@ -30,9 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
-            'body:ntext',
-            'type_id',
-            'status',
+            'slug',
+            'body:html',
+            'type.name',
+            [
+                'attribute' => 'status',
+                'format' => 'html',
+                'value' => Html::tag('span', $model->getCurrentStatus(), [
+                    'class' => 'label label-' . ($model->status ? 'success' : 'warning'),
+                ]),
+            ],
             'created_at',
         ],
     ]) ?>

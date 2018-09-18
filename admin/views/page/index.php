@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'format' => 'html',
                 'value' => function (ContentPage $model) {
-                    return Html::tag('span', $model->getStatusList()[$model->status], [
+                    return Html::tag('span', $model->getCurrentStatus(), [
                         'class' => 'label label-' . ($model->status ? 'success' : 'warning'),
                     ]);
                 },
