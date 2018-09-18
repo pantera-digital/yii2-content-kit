@@ -5,6 +5,7 @@ namespace pantera\content\models;
 use pantera\media\behaviors\MediaUploadBehavior;
 use pantera\media\models\Media;
 use pantera\seo\behaviors\SeoFields;
+use pantera\seo\models\Seo;
 
 /**
  * This is the model class for table "content_page".
@@ -18,6 +19,7 @@ use pantera\seo\behaviors\SeoFields;
  *
  * @property ContentType $type
  * @property Media $media
+ * @property Seo $seo
  */
 class ContentPage extends \yii\db\ActiveRecord
 {
