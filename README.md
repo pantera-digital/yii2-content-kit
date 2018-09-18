@@ -90,6 +90,7 @@ php yii migrate
 ],
 ```
 
-Новый файл должен называть index-{id} или index-{slug}
+Новый файл должен называть index--id-{id}, index--{slug} или index--type-{type}
 * -id идентификатор записи
 * -slug актуальный алиас записи
+* -type ключ типа

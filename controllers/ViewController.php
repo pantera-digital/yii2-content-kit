@@ -32,10 +32,14 @@ class ViewController extends Controller
             'model' => $model,
         ];
         try {
-            return $this->render('index-' . $model->id, $params);
+            return $this->render('index--id-' . $model->id, $params);
         } catch (ViewNotFoundException $e) {
             try {
-                return $this->render('index-' . $model->slug, $params);
+                try {
+                    return $this->render('index--' . $model->slug, $params);
+                } catch (ViewNotFoundException $e) {
+                    return $this->render('index--type-' . $model->type->key, $params);
+                }
             } catch (ViewNotFoundException $e) {
                 return $this->render('index', $params);
             }
