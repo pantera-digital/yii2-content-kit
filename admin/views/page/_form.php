@@ -1,10 +1,12 @@
 <?php
 
+use dosamigos\ckeditor\CKEditor;
 use pantera\content\models\ContentType;
 use pantera\media\widgets\innostudio\MediaUploadWidgetInnostudio;
 use pantera\seo\widgets\SeoForm;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentPage */
@@ -21,7 +23,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'body')->widget(CKEditor::className(), [
+        'options' => ['rows' => 6],
+        'preset' => 'full',
+    ]) ?>
 
     <?= MediaUploadWidgetInnostudio::widget([
         'model' => $model,
