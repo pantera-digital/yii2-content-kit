@@ -8,6 +8,8 @@
 
 namespace pantera\content\components;
 
+use pantera\content\models\ContentPage;
+use pantera\seo\models\SeoSlug;
 use yii\web\Request;
 use yii\web\UrlRuleInterface;
 
@@ -23,7 +25,15 @@ class UrlManager implements UrlRuleInterface
      */
     public function parseRequest($manager, $request)
     {
-        // TODO: Implement parseRequest() method.
+        $slugModel = SeoSlug::find()
+            ->andWhere(['=', SeoSlug::tableName() . '.slug', $request->pathInfo])
+            ->one();
+        if ($slugModel && $slugModel->model === ContentPage::className()) {
+            return ['content/view/index', [
+                'id' => $slugModel->model_id,
+            ]];
+        }
+        return false;
     }
 
     /**
@@ -35,6 +45,6 @@ class UrlManager implements UrlRuleInterface
      */
     public function createUrl($manager, $route, $params)
     {
-        // TODO: Implement createUrl() method.
+        return false;
     }
 }

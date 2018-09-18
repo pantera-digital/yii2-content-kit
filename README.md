@@ -61,3 +61,16 @@ php yii migrate
         'permissions' => ['admin'],
     ],
 ```
+
+### Конфигурация frontend приложения
+
+Добавить UrlManager в rules приложения
+```
+'urlManager' => [
+    'rules' => [
+        [
+            'class' => pantera\content\components\UrlManager::class,
+        ],
+    ],
+],
+```

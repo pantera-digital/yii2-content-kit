@@ -21,6 +21,9 @@ class ViewController extends Controller
     public function actionIndex($id)
     {
         $model = $this->findModel($id);
+        if ($model->slugCompare(Yii::$app->request->url) === false) {
+            return $this->redirect($model->getUrl(), 301);
+        }
         Yii::$app->seo->setTitle($model->seo->title ?: $model->title);
         Yii::$app->seo->setH1($model->seo->h1 ?: $model->title);
         Yii::$app->seo->setDescription($model->seo->description);

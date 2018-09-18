@@ -22,6 +22,8 @@ use pantera\seo\validators\SlugValidator;
  * @property ContentType $type
  * @property Media $media
  * @property Seo $seo
+ *
+ * @method bool slugCompare($slug)
  */
 class ContentPage extends \yii\db\ActiveRecord
 {
@@ -31,6 +33,15 @@ class ContentPage extends \yii\db\ActiveRecord
     const STATUS_ACTIVE = 1;
     /* @var int Идентификатор черновика */
     const STATUS_DRAFT = 0;
+
+    /**
+     * Получить url адрес для просмотра этой записи
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return '/' . $this->slug;
+    }
 
     /**
      * Получить список статусов
