@@ -29,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'slug',
-            'body:ntext',
             [
                 'attribute' => 'type_id',
                 'value' => 'type.name',
