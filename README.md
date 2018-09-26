@@ -103,3 +103,11 @@ php yii migrate
 Параметры
 * $pluginOptions - Настройка плагина карусели https://owlcarousel2.github.io/OwlCarousel2/docs/api-options.html
 * $options - Массив параметров для контейнера
+#### Block
+```
+<?= \pantera\content\widgets\block\Block::widget([
+    'blockId' => 1,
+]) ?>
+```
+Параметры
+* $blockId - Идентификатор блока
