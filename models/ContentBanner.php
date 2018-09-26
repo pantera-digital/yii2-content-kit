@@ -55,7 +55,7 @@ class ContentBanner extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'position'], 'required'],
+            [['title'], 'required'],
             [['body'], 'string'],
             [['status'], 'integer'],
             [['title', 'url', 'position', 'available_url'], 'string', 'max' => 255],
