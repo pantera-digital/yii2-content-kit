@@ -106,8 +106,11 @@ php yii migrate
 #### Block
 ```
 <?= \pantera\content\widgets\block\Block::widget([
-    'blockId' => 1,
+    'position' => 'left',
 ]) ?>
 ```
 Параметры
-* $blockId - Идентификатор блока
+* $position - Позиция
+* $ids - Идентификатор или набор идентификаторов
+* $activatedByUrl - Флаг что нужно активировать проверку по url
+* $layout - Шаблон обертка над блоками
