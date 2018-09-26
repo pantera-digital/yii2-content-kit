@@ -27,7 +27,6 @@ class Module extends \yii\base\Module
             ['label' => 'Type', 'url' => ['/content/type/index']],
             ['label' => 'Page', 'url' => ['/content/page/index']],
             ['label' => 'Slider', 'url' => ['/content/slider/index']],
-            ['label' => 'Block', 'url' => ['/content/block/index']],
             ['label' => 'Banner', 'url' => ['/content/banner/index']],
         ]]];
     }
