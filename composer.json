@@ -7,7 +7,8 @@
     "pantera-digital/yii2-seo": "*",
     "pantera-digital/yii2-media": "dev-master",
     "2amigos/yii2-ckeditor-widget": "~2.1",
-    "bower-asset/sweetalert2": "*"
+    "bower-asset/sweetalert2": "*",
+    "bower-asset/owl.carousel": "*"
   },
   "autoload": {
     "psr-4": {
