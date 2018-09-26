@@ -18,7 +18,7 @@ class ContentPageSearch extends ContentPage
     {
         return [
             [['id', 'type_id', 'status'], 'integer'],
-            [['title', 'body', 'created_at'], 'safe'],
+            [['title', 'created_at'], 'safe'],
         ];
     }
 
@@ -67,8 +67,7 @@ class ContentPageSearch extends ContentPage
             'created_at' => $this->created_at,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'body', $this->body]);
+        $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

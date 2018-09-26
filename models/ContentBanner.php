@@ -10,6 +10,8 @@ namespace pantera\content\models;
  * @property string $url
  * @property string $body
  * @property int $status
+ * @property string $position
+ * @property string $available_url
  */
 class ContentBanner extends \yii\db\ActiveRecord
 {
@@ -53,10 +55,10 @@ class ContentBanner extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'position'], 'required'],
             [['body'], 'string'],
             [['status'], 'integer'],
-            [['title', 'url'], 'string', 'max' => 255],
+            [['title', 'url', 'position', 'available_url'], 'string', 'max' => 255],
         ];
     }
 
@@ -71,6 +73,8 @@ class ContentBanner extends \yii\db\ActiveRecord
             'url' => 'Url',
             'body' => 'Body',
             'status' => 'Status',
+            'position' => 'Position',
+            'available_url' => 'Available Url',
         ];
     }
 

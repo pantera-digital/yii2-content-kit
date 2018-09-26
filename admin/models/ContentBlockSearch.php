@@ -18,7 +18,7 @@ class ContentBlockSearch extends ContentBlock
     {
         return [
             [['id', 'wysiwyg', 'status'], 'integer'],
-            [['title', 'body'], 'safe'],
+            [['title'], 'safe'],
         ];
     }
 
@@ -63,8 +63,7 @@ class ContentBlockSearch extends ContentBlock
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->body]);
+        $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

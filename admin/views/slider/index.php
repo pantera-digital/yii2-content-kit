@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             'title',
-            'url:url',
+            'url',
             [
                 'attribute' => 'status',
                 'format' => 'html',

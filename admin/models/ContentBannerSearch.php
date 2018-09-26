@@ -19,7 +19,7 @@ class ContentBannerSearch extends ContentBanner
     {
         return [
             [['id', 'status'], 'integer'],
-            [['title', 'url', 'body'], 'safe'],
+            [['title', 'url', 'position'], 'safe'],
         ];
     }
 
@@ -65,7 +65,7 @@ class ContentBannerSearch extends ContentBanner
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'url', $this->url])
-            ->andFilterWhere(['like', 'body', $this->body]);
+            ->andFilterWhere(['like', 'position', $this->position]);
 
         return $dataProvider;
     }
