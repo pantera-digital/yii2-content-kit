@@ -94,3 +94,12 @@ php yii migrate
 * -id идентификатор записи
 * -slug актуальный алиас записи
 * -type ключ типа
+
+### Виджеты
+#### Slider
+```
+<?= pantera\content\widgets\slider\Slider::widget() ?>
+```
+Параметры
+* $pluginOptions - Настройка плагина карусели https://owlcarousel2.github.io/OwlCarousel2/docs/api-options.html
+* $options - Массив параметров для контейнера

@@ -9,10 +9,14 @@ namespace pantera\content\models;
  */
 class ContentSliderQuery extends \yii\db\ActiveQuery
 {
-    /*public function active()
+    /**
+     * Только активные
+     * @return ContentSliderQuery
+     */
+    public function isActive(): self
     {
-        return $this->andWhere('[[status]]=1');
-    }*/
+        return $this->andWhere(['=', ContentSlider::tableName() . '.status', ContentSlider::STATUS_ACTIVE]);
+    }
 
     /**
      * {@inheritdoc}

@@ -9,10 +9,14 @@ namespace pantera\content\models;
  */
 class ContentBannerQuery extends \yii\db\ActiveQuery
 {
-    /*public function active()
+    /**
+     * Только активные
+     * @return ContentBannerQuery
+     */
+    public function isActive(): self
     {
-        return $this->andWhere('[[status]]=1');
-    }*/
+        return $this->andWhere(['=', ContentBanner::tableName() . '.status', ContentBanner::STATUS_ACTIVE]);
+    }
 
     /**
      * {@inheritdoc}

@@ -9,10 +9,14 @@ namespace pantera\content\models;
  */
 class ContentBlockQuery extends \yii\db\ActiveQuery
 {
-    /*public function active()
+    /**
+     * Только активные
+     * @return ContentBlockQuery
+     */
+    public function isActive(): self
     {
-        return $this->andWhere('[[status]]=1');
-    }*/
+        return $this->andWhere(['=', ContentBlock::tableName() . '.status', ContentBlock::STATUS_ACTIVE]);
+    }
 
     /**
      * {@inheritdoc}
