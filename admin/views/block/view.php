@@ -1,17 +1,16 @@
 <?php
 
-use pantera\content\models\ContentSlider;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model pantera\content\models\ContentSlider */
+/* @var $model pantera\content\models\ContentBlock */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Content Sliders', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Content Blocks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="content-slider-view">
+<div class="content-block-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,22 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
-            'url:url',
+            'body:ntext',
             [
                 'attribute' => 'status',
                 'format' => 'html',
                 'value' => Html::tag('span', $model->getCurrentStatus(), [
                     'class' => 'label label-' . ($model->status ? 'success' : 'warning'),
                 ]),
-            ],
-            [
-                'label' => 'Image',
-                'format' => 'raw',
-                'value' => function (ContentSlider $model) {
-                    if ($model->media && $model->media->issetMedia()) {
-                        return Html::img($model->media->image());
-                    }
-                },
             ],
         ],
     ]) ?>
