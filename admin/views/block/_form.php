@@ -5,11 +5,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model pantera\content\models\ContentBanner */
+/* @var $model pantera\content\models\ContentBlock */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="content-banner-form">
+<div class="content-block-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

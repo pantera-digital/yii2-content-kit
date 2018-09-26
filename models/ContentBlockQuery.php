@@ -5,22 +5,22 @@ namespace pantera\content\models;
 /**
  * This is the ActiveQuery class for [[ContentBanner]].
  *
- * @see ContentBanner
+ * @see ContentBlock
  */
-class ContentBannerQuery extends \yii\db\ActiveQuery
+class ContentBlockQuery extends \yii\db\ActiveQuery
 {
     /**
      * Только активные
-     * @return ContentBannerQuery
+     * @return ContentBlockQuery
      */
     public function isActive(): self
     {
-        return $this->andWhere(['=', ContentBanner::tableName() . '.status', ContentBanner::STATUS_ACTIVE]);
+        return $this->andWhere(['=', ContentBlock::tableName() . '.status', ContentBlock::STATUS_ACTIVE]);
     }
 
     /**
      * {@inheritdoc}
-     * @return ContentBanner[]|array
+     * @return ContentBlock[]|array
      */
     public function all($db = null)
     {
@@ -29,7 +29,7 @@ class ContentBannerQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return ContentBanner|array|null
+     * @return ContentBlock|array|null
      */
     public function one($db = null)
     {

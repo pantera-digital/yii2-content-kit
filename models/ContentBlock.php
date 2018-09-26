@@ -13,7 +13,7 @@ namespace pantera\content\models;
  * @property string $position
  * @property string $available_url
  */
-class ContentBanner extends \yii\db\ActiveRecord
+class ContentBlock extends \yii\db\ActiveRecord
 {
     /* @var int Активный статус */
     const STATUS_ACTIVE = 1;
@@ -46,7 +46,7 @@ class ContentBanner extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%content_banner}}';
+        return '{{%content_block}}';
     }
 
     /**
@@ -80,10 +80,10 @@ class ContentBanner extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return ContentBannerQuery the active query used by this AR class.
+     * @return ContentBlockQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new ContentBannerQuery(get_called_class());
+        return new ContentBlockQuery(get_called_class());
     }
 }

@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model pantera\content\models\ContentBanner */
+/* @var $model pantera\content\models\ContentBlock */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Content Banners', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Content Blocks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="content-banner-view">
+<div class="content-block-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

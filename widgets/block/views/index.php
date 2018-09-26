@@ -1,11 +1,11 @@
 <?php
 
-use pantera\content\models\ContentBanner;
+use pantera\content\models\ContentBlock;
 use yii\helpers\Html;
 use yii\web\View;
 
 /* @var $this View */
-/* @var $model ContentBanner */
+/* @var $model ContentBlock */
 ?>
 <div class="block">
     <?php

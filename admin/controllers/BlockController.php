@@ -2,9 +2,9 @@
 
 namespace pantera\content\admin\controllers;
 
-use pantera\content\admin\models\ContentBannerSearch;
+use pantera\content\admin\models\ContentBlockSearch;
 use pantera\content\admin\Module;
-use pantera\content\models\ContentBanner;
+use pantera\content\models\ContentBlock;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -14,7 +14,7 @@ use yii\web\NotFoundHttpException;
 /**
  * BannerController implements the CRUD actions for ContentBanner model.
  */
-class BannerController extends Controller
+class BlockController extends Controller
 {
     /* @var Module */
     public $module;
@@ -49,7 +49,7 @@ class BannerController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ContentBannerSearch();
+        $searchModel = new ContentBlockSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -78,7 +78,7 @@ class BannerController extends Controller
      */
     public function actionCreate()
     {
-        $model = new ContentBanner();
+        $model = new ContentBlock();
         $model->loadDefaultValues();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -129,12 +129,12 @@ class BannerController extends Controller
      * Finds the ContentBanner model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ContentBanner the loaded model
+     * @return ContentBlock the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ContentBanner::findOne($id)) !== null) {
+        if (($model = ContentBlock::findOne($id)) !== null) {
             return $model;
         }
 

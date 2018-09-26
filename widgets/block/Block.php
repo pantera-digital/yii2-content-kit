@@ -6,10 +6,10 @@
  * Time: 12:14 PM
  */
 
-namespace pantera\content\widgets\banner;
+namespace pantera\content\widgets\block;
 
 
-use pantera\content\models\ContentBanner;
+use pantera\content\models\ContentBlock;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
@@ -17,7 +17,7 @@ use yii\helpers\ArrayHelper;
 use function implode;
 use const SORT_DESC;
 
-class Banner extends Widget
+class Block extends Widget
 {
     /* @var integer|array|null Идентификаторы конкретного банера */
     public $ids;
@@ -33,18 +33,18 @@ class Banner extends Widget
         parent::run();
         $models = [];
         if ($this->ids) {
-            $_models = ContentBanner::find()
+            $_models = ContentBlock::find()
                 ->isActive()
-                ->andWhere(['IN', ContentBanner::tableName() . '.id', $this->ids])
-                ->orderBy([ContentBanner::tableName() . '.id' => SORT_DESC])
+                ->andWhere(['IN', ContentBlock::tableName() . '.id', $this->ids])
+                ->orderBy([ContentBlock::tableName() . '.id' => SORT_DESC])
                 ->all();
             $models = ArrayHelper::merge($models, $_models);
         }
         if ($this->position) {
-            $_models = ContentBanner::find()
+            $_models = ContentBlock::find()
                 ->isActive()
-                ->andWhere(['=', ContentBanner::tableName() . '.position', $this->position])
-                ->orderBy([ContentBanner::tableName() . '.id' => SORT_DESC])
+                ->andWhere(['=', ContentBlock::tableName() . '.position', $this->position])
+                ->orderBy([ContentBlock::tableName() . '.id' => SORT_DESC])
                 ->all();
             $models = ArrayHelper::merge($models, $_models);
         }

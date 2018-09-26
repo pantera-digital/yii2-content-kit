@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model pantera\content\models\ContentBanner */
+/* @var $model pantera\content\models\ContentBlock */
 
-$this->title = 'Create Content Banner';
-$this->params['breadcrumbs'][] = ['label' => 'Content Banners', 'url' => ['index']];
+$this->title = 'Create Content Block';
+$this->params['breadcrumbs'][] = ['label' => 'Content Blocks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="content-banner-create">
+<div class="content-block-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

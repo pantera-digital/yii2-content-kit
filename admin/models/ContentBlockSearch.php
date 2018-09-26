@@ -5,12 +5,12 @@ namespace pantera\content\admin\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use pantera\content\models\ContentBanner;
+use pantera\content\models\ContentBlock;
 
 /**
  * ContentBannerSearch represents the model behind the search form of `pantera\content\models\ContentBanner`.
  */
-class ContentBannerSearch extends ContentBanner
+class ContentBlockSearch extends ContentBlock
 {
     /**
      * {@inheritdoc}
@@ -41,7 +41,7 @@ class ContentBannerSearch extends ContentBanner
      */
     public function search($params)
     {
-        $query = ContentBanner::find();
+        $query = ContentBlock::find();
 
         // add conditions that should always apply here
 
