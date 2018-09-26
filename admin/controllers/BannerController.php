@@ -2,9 +2,9 @@
 
 namespace pantera\content\admin\controllers;
 
-use pantera\content\admin\models\ContentBlockSearch;
+use pantera\content\admin\models\ContentBannerSearch;
 use pantera\content\admin\Module;
-use pantera\content\models\ContentBlock;
+use pantera\content\models\ContentBanner;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -12,9 +12,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
- * BlockController implements the CRUD actions for ContentBlock model.
+ * BannerController implements the CRUD actions for ContentBanner model.
  */
-class BlockController extends Controller
+class BannerController extends Controller
 {
     /* @var Module */
     public $module;
@@ -44,12 +44,12 @@ class BlockController extends Controller
     }
 
     /**
-     * Lists all ContentBlock models.
+     * Lists all ContentBanner models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ContentBlockSearch();
+        $searchModel = new ContentBannerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -59,7 +59,7 @@ class BlockController extends Controller
     }
 
     /**
-     * Displays a single ContentBlock model.
+     * Displays a single ContentBanner model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -72,13 +72,13 @@ class BlockController extends Controller
     }
 
     /**
-     * Creates a new ContentBlock model.
+     * Creates a new ContentBanner model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ContentBlock();
+        $model = new ContentBanner();
         $model->loadDefaultValues();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -90,7 +90,7 @@ class BlockController extends Controller
     }
 
     /**
-     * Updates an existing ContentBlock model.
+     * Updates an existing ContentBanner model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -110,7 +110,7 @@ class BlockController extends Controller
     }
 
     /**
-     * Deletes an existing ContentBlock model.
+     * Deletes an existing ContentBanner model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -126,15 +126,15 @@ class BlockController extends Controller
     }
 
     /**
-     * Finds the ContentBlock model based on its primary key value.
+     * Finds the ContentBanner model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ContentBlock the loaded model
+     * @return ContentBanner the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ContentBlock::findOne($id)) !== null) {
+        if (($model = ContentBanner::findOne($id)) !== null) {
             return $model;
         }
 
