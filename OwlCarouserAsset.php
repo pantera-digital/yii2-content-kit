@@ -17,11 +17,11 @@ class OwlCarouserAsset extends AssetBundle
     public $sourcePath = '@bower/owl.carousel/dist';
 
     public $css = [
-        'assets/owl.carouser.min.css'
+        'assets/owl.carousel.min.css'
     ];
 
     public $js = [
-        'owl.carouser.min.js'
+        'owl.carousel.min.js'
     ];
 
     public $depends = [
