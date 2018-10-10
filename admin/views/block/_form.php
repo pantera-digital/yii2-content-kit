@@ -28,10 +28,17 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 
-    <?= $form->field($model, 'body')->widget(CKEditor::className(), [
-        'options' => ['rows' => 6],
-        'preset' => 'full',
-    ]); ?>
+    <?php
+    if ($model->editor) {
+        echo $form->field($model, 'body')->widget(CKEditor::className(), [
+            'preset' => 'full',
+        ]);
+    } else {
+        echo $form->field($model, 'body')->textarea(['rows' => 20]);
+    }
+    ?>
+
+    <?= $form->field($model, 'editor')->checkbox() ?>
 
     <?= $form->field($model, 'status')->checkbox() ?>
 

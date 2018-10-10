@@ -12,6 +12,7 @@ namespace pantera\content\models;
  * @property int $status
  * @property string $position
  * @property string $available_url
+ * @property string $editor
  */
 class ContentBlock extends \yii\db\ActiveRecord
 {
@@ -59,6 +60,7 @@ class ContentBlock extends \yii\db\ActiveRecord
             [['body'], 'string'],
             [['status'], 'integer'],
             [['title', 'url', 'position', 'available_url'], 'string', 'max' => 255],
+            [['editor'], 'integer'],
         ];
     }
 
