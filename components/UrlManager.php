@@ -10,6 +10,7 @@ namespace pantera\content\components;
 
 use pantera\content\models\ContentPage;
 use pantera\seo\models\SeoSlug;
+use function var_dump;
 use yii\web\Request;
 use yii\web\UrlRuleInterface;
 
@@ -25,8 +26,9 @@ class UrlManager implements UrlRuleInterface
      */
     public function parseRequest($manager, $request)
     {
+        $slug = $request->pathInfo ?: '<front>';
         $slugModel = SeoSlug::find()
-            ->andWhere(['=', SeoSlug::tableName() . '.slug', $request->pathInfo])
+            ->andWhere(['=', SeoSlug::tableName() . '.slug', $slug])
             ->one();
         if ($slugModel && $slugModel->model === ContentPage::className()) {
             return ['content/view/index', [
