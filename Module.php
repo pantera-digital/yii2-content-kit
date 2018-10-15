@@ -10,5 +10,5 @@ namespace pantera\content;
 
 class Module extends \yii\base\Module
 {
-
+    const SLUG_FRONT_PAGE = '<front>';
 }

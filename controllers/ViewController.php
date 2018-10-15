@@ -10,14 +10,19 @@ namespace pantera\content\controllers;
 
 
 use pantera\content\models\ContentPage;
+use pantera\content\Module;
 use Yii;
 use yii\base\ViewNotFoundException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use function is_null;
+use function str_replace;
 
 class ViewController extends Controller
 {
+    /* @var Module */
+    public $module;
+
     public function actionIndex($id)
     {
         $model = $this->findModel($id);
@@ -36,7 +41,11 @@ class ViewController extends Controller
         } catch (ViewNotFoundException $e) {
             try {
                 try {
-                    return $this->render('index--' . $model->slug, $params);
+                    $slug = $model->slug;
+                    if ($slug === $this->module::SLUG_FRONT_PAGE) {
+                        $slug = str_replace(['<', '>'], '', $this->module::SLUG_FRONT_PAGE);
+                    }
+                    return $this->render('index--' . $slug, $params);
                 } catch (ViewNotFoundException $e) {
                     return $this->render('index--type-' . $model->type->key, $params);
                 }

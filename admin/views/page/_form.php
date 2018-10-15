@@ -2,6 +2,7 @@
 
 use dosamigos\ckeditor\CKEditor;
 use pantera\content\models\ContentType;
+use pantera\content\Module;
 use pantera\media\widgets\innostudio\MediaUploadWidgetInnostudio;
 use pantera\seo\widgets\SeoForm;
 use yii\helpers\Html;
@@ -23,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'slug')->hint(Html::encode('<front> для указания главной страницы')) ?>
+    <?= $form->field($model, 'slug')->hint(Html::encode(Module::SLUG_FRONT_PAGE . ' для указания главной страницы')) ?>
 
     <?= $form->field($model, 'body')->widget(CKEditor::className(), [
         'options' => ['rows' => 6],
