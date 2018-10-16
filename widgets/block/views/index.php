@@ -6,13 +6,6 @@ use yii\web\View;
 
 /* @var $this View */
 /* @var $model ContentBlock */
-?>
-<div class="block">
-    <?php
-    if ($model->url) {
-        echo Html::a($model->body, $model->url);
-    } else {
-        echo $model->body;
-    }
-    ?>
-</div>
+echo Html::tag('div', $model->body, [
+    'class' => 'block',
+]);

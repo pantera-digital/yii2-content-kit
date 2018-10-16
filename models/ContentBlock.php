@@ -7,7 +7,6 @@ namespace pantera\content\models;
  *
  * @property int $id
  * @property string $title
- * @property string $url
  * @property string $body
  * @property int $status
  * @property string $position
@@ -59,7 +58,7 @@ class ContentBlock extends \yii\db\ActiveRecord
             [['title'], 'required'],
             [['body'], 'string'],
             [['status'], 'integer'],
-            [['title', 'url', 'position', 'available_url'], 'string', 'max' => 255],
+            [['title', 'position', 'available_url'], 'string', 'max' => 255],
             [['editor'], 'integer'],
         ];
     }
@@ -72,7 +71,6 @@ class ContentBlock extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
-            'url' => 'Url',
             'body' => 'Body',
             'status' => 'Status',
             'position' => 'Position',
