@@ -2,6 +2,7 @@
 
 namespace pantera\content\admin\models;
 
+use const SORT_DESC;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -47,6 +48,9 @@ class ContentBlockSearch extends ContentBlock
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['id' => SORT_DESC],
+            ],
         ]);
 
         $this->load($params);

@@ -7,6 +7,7 @@ use pantera\media\widgets\innostudio\MediaUploadWidgetInnostudio;
 use pantera\seo\widgets\SeoForm;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use mihaildev\elfinder\ElFinder;
 
 
 /* @var $this yii\web\View */
@@ -27,8 +28,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'slug')->hint(Html::encode(Module::SLUG_FRONT_PAGE . ' для указания главной страницы')) ?>
 
     <?= $form->field($model, 'body')->widget(CKEditor::className(), [
-        'options' => ['rows' => 6],
         'preset' => 'full',
+        'clientOptions' => ElFinder::ckeditorOptions('elfinder', []),
     ]) ?>
 
     <?= MediaUploadWidgetInnostudio::widget([

@@ -3,6 +3,7 @@
 use dosamigos\ckeditor\CKEditor;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use mihaildev\elfinder\ElFinder;
 
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentBlock */
@@ -29,6 +30,7 @@ use yii\widgets\ActiveForm;
     if ($model->editor) {
         echo $form->field($model, 'body')->widget(CKEditor::className(), [
             'preset' => 'full',
+            'clientOptions' => ElFinder::ckeditorOptions('elfinder', []),
         ]);
     } else {
         echo $form->field($model, 'body')->textarea(['rows' => 20]);

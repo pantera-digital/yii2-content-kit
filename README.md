@@ -11,6 +11,8 @@ https://github.com/pantera-digital/yii2-seo
 
 ### Установка модуля
 
+Установить и настроить модуль https://github.com/MihailDev/yii2-elfinder
+
 Выполните команду composer:
 ```
 composer require pantera-digital/yii2-content-kit
