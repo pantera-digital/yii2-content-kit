@@ -62,6 +62,35 @@ php yii migrate
         'class' => \pantera\content\admin\Module::className(),
         'permissions' => ['admin'],
     ],
+    'components' => [
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => false,
+            'showScriptName' => false,
+            'rules' => [
+                [
+                    'pattern' => 'content/page/<key>',
+                    'route' => 'content/page/index',
+                ],
+                [
+                    'pattern' => 'content/page/<key>/create',
+                    'route' => 'content/page/create',
+                ],
+                [
+                    'pattern' => 'content/page/<key>/update/<id>',
+                    'route' => 'content/page/update',
+                ],
+                [
+                    'pattern' => 'content/page/<key>/view/<id>',
+                    'route' => 'content/page/view',
+                ],
+                [
+                    'pattern' => 'content/page/<key>/delete/<id>',
+                    'route' => 'content/page/delete',
+                ],
+            ],
+        ],
+    ]
 ```
 
 ### Конфигурация frontend приложения

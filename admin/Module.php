@@ -8,6 +8,8 @@
 
 namespace pantera\content\admin;
 
+use pantera\content\models\ContentType;
+use function var_dump;
 use Yii;
 
 class Module extends \yii\base\Module
@@ -23,11 +25,15 @@ class Module extends \yii\base\Module
 
     public function getMenuItems()
     {
-        return [['label' => 'Content', 'url' => '#', 'icon' => 'file-text', 'items' => [
+        $items = [
             ['label' => 'Type', 'url' => ['/content/type/index']],
-            ['label' => 'Page', 'url' => ['/content/page/index']],
             ['label' => 'Slider', 'url' => ['/content/slider/index']],
             ['label' => 'Block', 'url' => ['/content/block/index']],
-        ]]];
+        ];
+        $types = ContentType::find()->all();
+        foreach ($types as $type) {
+            $items[] = ['label' => $type->name, 'url' => ['/content/page/' . $type->key]];
+        }
+        return [['label' => 'Content', 'url' => '#', 'icon' => 'file-text', 'items' => $items]];
     }
 }

@@ -40,7 +40,8 @@ class ContentPageSearch extends ContentPage
      */
     public function search($params)
     {
-        $query = ContentPage::find();
+        $query = ContentPage::find()
+            ->joinWith(['type']);
 
         // add conditions that should always apply here
 

@@ -5,11 +5,13 @@ namespace pantera\content\admin\controllers;
 use pantera\content\admin\models\ContentPageSearch;
 use pantera\content\admin\Module;
 use pantera\content\models\ContentPage;
+use pantera\content\models\ContentType;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use function is_null;
 
 /**
  * PageController implements the CRUD actions for ContentPage model.
@@ -67,13 +69,16 @@ class PageController extends Controller
 
     /**
      * Lists all ContentPage models.
+     * @param $key
      * @return mixed
+     * @throws NotFoundHttpException
      */
-    public function actionIndex()
+    public function actionIndex($key)
     {
+        $typeModel = $this->findTypeModel($key);
         $searchModel = new ContentPageSearch();
+        $searchModel->type_id = $typeModel->id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -82,11 +87,12 @@ class PageController extends Controller
 
     /**
      * Displays a single ContentPage model.
+     * @param $key
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($key, $id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -96,14 +102,18 @@ class PageController extends Controller
     /**
      * Creates a new ContentPage model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     * @param $key
      * @return mixed
+     * @throws NotFoundHttpException
      */
-    public function actionCreate()
+    public function actionCreate($key)
     {
+        $type = $this->findTypeModel($key);
         $model = new ContentPage();
         $model->loadDefaultValues();
+        $model->type_id = $type->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'key' => $model->type->key, 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -114,16 +124,17 @@ class PageController extends Controller
     /**
      * Updates an existing ContentPage model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     * @param $key
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($key, $id)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'key' => $model->type->key, 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -134,17 +145,17 @@ class PageController extends Controller
     /**
      * Deletes an existing ContentPage model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param $key
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      * @throws \Throwable
      * @throws \yii\db\StaleObjectException
      */
-    public function actionDelete($id)
+    public function actionDelete($key, $id)
     {
         $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        return $this->redirect(['index', 'key' => $key]);
     }
 
     /**
@@ -161,5 +172,16 @@ class PageController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function findTypeModel($key)
+    {
+        $model = ContentType::find()
+            ->andWhere(['=', ContentType::tableName() . '.key', $key])
+            ->one();
+        if (is_null($model)) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+        return $model;
     }
 }

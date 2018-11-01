@@ -19,10 +19,6 @@ use mihaildev\elfinder\ElFinder;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'type_id')->dropDownList(ContentType::getList(), [
-        'prompt' => '---',
-    ]) ?>
-
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'slug')->hint(Html::encode(Module::SLUG_FRONT_PAGE . ' для указания главной страницы')) ?>
