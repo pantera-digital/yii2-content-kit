@@ -75,6 +75,7 @@ class ContentBlock extends \yii\db\ActiveRecord
             'status' => 'Status',
             'position' => 'Position',
             'available_url' => 'Available Url',
+            'editor' => 'Editor',
         ];
     }
 

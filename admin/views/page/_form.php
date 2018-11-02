@@ -1,13 +1,12 @@
 <?php
 
 use dosamigos\ckeditor\CKEditor;
-use pantera\content\models\ContentType;
+use mihaildev\elfinder\ElFinder;
 use pantera\content\Module;
 use pantera\media\widgets\innostudio\MediaUploadWidgetInnostudio;
 use pantera\seo\widgets\SeoForm;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use mihaildev\elfinder\ElFinder;
 
 
 /* @var $this yii\web\View */
@@ -23,10 +22,18 @@ use mihaildev\elfinder\ElFinder;
 
     <?= $form->field($model, 'slug')->hint(Html::encode(Module::SLUG_FRONT_PAGE . ' для указания главной страницы')) ?>
 
-    <?= $form->field($model, 'body')->widget(CKEditor::className(), [
-        'preset' => 'full',
-        'clientOptions' => ElFinder::ckeditorOptions('elfinder', []),
-    ]) ?>
+    <?php
+    if ($model->editor) {
+        echo $form->field($model, 'body')->widget(CKEditor::className(), [
+            'preset' => 'full',
+            'clientOptions' => ElFinder::ckeditorOptions('elfinder', []),
+        ]);
+    } else {
+        echo $form->field($model, 'body')->textarea(['rows' => 20]);
+    }
+    ?>
+
+    <?= $form->field($model, 'editor')->checkbox() ?>
 
     <?= MediaUploadWidgetInnostudio::widget([
         'model' => $model,

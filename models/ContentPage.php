@@ -18,6 +18,7 @@ use pantera\seo\validators\SlugValidator;
  * @property int $type_id
  * @property int $status
  * @property string $created_at
+ * @property string $editor
  *
  * @property ContentType $type
  * @property Media $media
@@ -107,6 +108,7 @@ class ContentPage extends \yii\db\ActiveRecord
             [['title'], 'string', 'max' => 255],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => ContentType::className(), 'targetAttribute' => ['type_id' => 'id']],
             [['slug'], SlugValidator::className(), 'skipOnEmpty' => false],
+            [['editor'], 'integer'],
         ];
     }
 
@@ -122,6 +124,7 @@ class ContentPage extends \yii\db\ActiveRecord
             'type_id' => 'Type',
             'status' => 'Status',
             'created_at' => 'Created At',
+            'editor' => 'Editor',
         ];
     }
 
