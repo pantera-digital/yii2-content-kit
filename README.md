@@ -69,6 +69,14 @@ php yii migrate
             'showScriptName' => false,
             'rules' => [
                 [
+                    'pattern' => 'content/page/file-delete',
+                    'route' => 'content/page/file-delete',
+                ],
+                [
+                    'pattern' => 'content/page/file-upload/<id>',
+                    'route' => 'content/page/file-upload',
+                ],
+                [
                     'pattern' => 'content/page/<key>',
                     'route' => 'content/page/index',
                 ],
