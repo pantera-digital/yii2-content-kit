@@ -12,6 +12,9 @@ use pantera\media\models\Media;
  * @property string $title
  * @property string $url
  * @property int $status
+ * @property string $row_1
+ * @property string $row_2
+ * @property string $row_3
  *
  * @property Media $media
  */
@@ -72,6 +75,7 @@ class ContentSlider extends \yii\db\ActiveRecord
             [['title'], 'required'],
             [['status'], 'integer'],
             [['title', 'url'], 'string', 'max' => 255],
+            [['row_1', 'row_2', 'row_3'], 'string'],
         ];
     }
 

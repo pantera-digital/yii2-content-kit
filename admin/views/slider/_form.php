@@ -3,6 +3,8 @@
 use pantera\media\widgets\innostudio\MediaUploadWidgetInnostudio;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\ckeditor\CKEditor;
+use mihaildev\elfinder\ElFinder;
 
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentSlider */
@@ -16,6 +18,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'row_1')->textarea(['rows' => 7]) ?>
+
+    <?= $form->field($model, 'row_2')->textarea(['rows' => 7]) ?>
+
+    <?= $form->field($model, 'row_3')->textarea(['rows' => 7]) ?>
 
     <?= MediaUploadWidgetInnostudio::widget([
         'model' => $model,
