@@ -2,12 +2,11 @@
 
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentType */
 
-$this->title = 'Create Content Type';
-$this->params['breadcrumbs'][] = ['label' => 'Content Types', 'url' => ['index']];
+$this->title = Yii::t('content', 'Create Content Type');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('content', 'Content Types'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-type-create">

@@ -3,8 +3,6 @@
 use pantera\media\widgets\innostudio\MediaUploadWidgetInnostudio;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use dosamigos\ckeditor\CKEditor;
-use mihaildev\elfinder\ElFinder;
 
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentSlider */
@@ -38,7 +36,7 @@ use mihaildev\elfinder\ElFinder;
     <?= $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('content', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

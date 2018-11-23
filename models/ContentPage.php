@@ -8,6 +8,7 @@ use pantera\seo\behaviors\SeoFields;
 use pantera\seo\behaviors\SlugBehavior;
 use pantera\seo\models\Seo;
 use pantera\seo\validators\SlugValidator;
+use Yii;
 
 /**
  * This is the model class for table "content_page".
@@ -51,8 +52,8 @@ class ContentPage extends \yii\db\ActiveRecord
     public function getStatusList(): array
     {
         return [
-            0 => 'Черновик',
-            1 => 'Опубликовано',
+            0 => Yii::t('content', 'Draft'),
+            1 => Yii::t('content', 'Published'),
         ];
     }
 
@@ -106,7 +107,13 @@ class ContentPage extends \yii\db\ActiveRecord
             [['status'], 'in', 'range' => [0, 1]],
             [['created_at'], 'safe'],
             [['title'], 'string', 'max' => 255],
-            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => ContentType::className(), 'targetAttribute' => ['type_id' => 'id']],
+            [
+                ['type_id'],
+                'exist',
+                'skipOnError' => true,
+                'targetClass' => ContentType::class,
+                'targetAttribute' => ['type_id' => 'id']
+            ],
             [['slug'], SlugValidator::className(), 'skipOnEmpty' => false],
             [['editor'], 'integer'],
         ];
@@ -119,12 +126,13 @@ class ContentPage extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'body' => 'Body',
-            'type_id' => 'Type',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'editor' => 'Editor',
+            'title' => Yii::t('content', 'Title'),
+            'body' => Yii::t('content', 'Body'),
+            'type_id' => Yii::t('content', 'Type'),
+            'status' => Yii::t('content', 'Status'),
+            'created_at' => Yii::t('content', 'Created At'),
+            'editor' => Yii::t('content', 'Editor'),
+            'slug' => Yii::t('content', 'Slug'),
         ];
     }
 

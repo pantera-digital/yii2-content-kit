@@ -5,10 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentSlider */
 
-$this->title = 'Update Content Slider: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Content Sliders', 'url' => ['index']];
+$this->title = Yii::t('content', 'Update Content Slider: {TITLE}', [
+    'TITLE' => $model->title,
+]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('content', 'Content Sliders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::t('content', 'Update');
 ?>
 <div class="content-slider-update">
 

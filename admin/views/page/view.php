@@ -7,7 +7,9 @@ use yii\widgets\DetailView;
 /* @var $model pantera\content\models\ContentPage */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Content Pages ' . $model->type->name, 'url' => ['index', 'key' =>  $model->type->key]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('content', 'Content Pages {NAME}', [
+    'NAME' => $model->type->name
+]), 'url' => ['index', 'key' => $model->type->key]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-page-view">
@@ -15,11 +17,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'key' => $model->type->key, 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'key' => $model->type->key, 'id' => $model->id], [
+        <?= Html::a(Yii::t('content', 'Update'), [
+            'update',
+            'key' => $model->type->key,
+            'id' => $model->id
+        ], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('content', 'Delete'), ['delete', 'key' => $model->type->key, 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>

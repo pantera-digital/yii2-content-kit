@@ -2,6 +2,7 @@
 
 namespace pantera\content\models;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -55,8 +56,8 @@ class ContentType extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'key' => 'Key',
+            'name' => Yii::t('content', 'Name'),
+            'key' => Yii::t('content', 'Key'),
         ];
     }
 

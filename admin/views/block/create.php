@@ -2,12 +2,11 @@
 
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentBlock */
 
-$this->title = 'Create Content Block';
-$this->params['breadcrumbs'][] = ['label' => 'Content Blocks', 'url' => ['index']];
+$this->title = Yii::t('content', 'Create Content Block');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('content', 'Content Blocks'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-block-create">

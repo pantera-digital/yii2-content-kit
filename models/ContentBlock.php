@@ -2,6 +2,8 @@
 
 namespace pantera\content\models;
 
+use Yii;
+
 /**
  * This is the model class for table "{{%content_banner}}".
  *
@@ -27,8 +29,8 @@ class ContentBlock extends \yii\db\ActiveRecord
     public function getStatusList(): array
     {
         return [
-            self::STATUS_ACTIVE => 'Опубликован',
-            self::STATUS_NOT_ACTIVE => 'Черновик',
+            self::STATUS_ACTIVE => Yii::t('content', 'Published'),
+            self::STATUS_NOT_ACTIVE => Yii::t('content', 'Draft'),
         ];
     }
 
@@ -70,12 +72,12 @@ class ContentBlock extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'body' => 'Body',
-            'status' => 'Status',
-            'position' => 'Position',
-            'available_url' => 'Available Url',
-            'editor' => 'Editor',
+            'title' => Yii::t('content', 'Title'),
+            'body' => Yii::t('content', 'Body'),
+            'status' => Yii::t('content', 'Status'),
+            'position' => Yii::t('content', 'Position'),
+            'available_url' => Yii::t('content', 'Available Url'),
+            'editor' => Yii::t('content', 'Editor'),
         ];
     }
 

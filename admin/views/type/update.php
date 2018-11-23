@@ -5,10 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentType */
 
-$this->title = 'Update Content Type: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Content Types', 'url' => ['index']];
+$this->title = Yii::t('content', 'Update Content Type: {TITLE}', [
+    'TITLE' => $model->name
+]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('content', 'Content Types'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::t('content', 'Update');
 ?>
 <div class="content-type-update">
 

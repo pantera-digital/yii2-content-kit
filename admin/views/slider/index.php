@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel pantera\content\admin\models\ContentSliderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Content Sliders';
+$this->title = Yii::t('content', 'Content Sliders');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-slider-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
 
     <p>
-        <?= Html::a('Create Content Slider', ['create'], [
+        <?= Html::a(Yii::t('content', 'Create Content Slider'), ['create'], [
             'class' => 'btn btn-success',
             'data' => [
                 'pjax' => 0,

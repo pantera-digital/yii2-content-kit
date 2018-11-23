@@ -10,7 +10,9 @@ use yii\widgets\Pjax;
 /* @var $searchModel pantera\content\admin\models\ContentPageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Content Pages ' . $searchModel->type->name;
+$this->title = Yii::t('content', 'Content Pages {NAME}', [
+    'NAME' => $searchModel->type->name
+]);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-page-index">
@@ -19,7 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
 
     <p>
-        <?= Html::a('Create ' . $searchModel->type->name, ['create', 'key' => $searchModel->type->key], [
+        <?= Html::a(Yii::t('content', 'Create {NAME}', [
+                'NAME' => $searchModel->type->name
+        ]), ['create', 'key' => $searchModel->type->key], [
             'class' => 'btn btn-success',
             'data' => [
                 'pjax' => 0,

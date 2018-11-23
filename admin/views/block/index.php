@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel pantera\content\admin\models\ContentBlockSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Content Blocks';
+$this->title = Yii::t('content', 'Content Blocks');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-block-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
 
     <p>
-        <?= Html::a('Create Content Block', ['create'], [
+        <?= Html::a(Yii::t('content', 'Create Content Block'), ['create'], [
             'class' => 'btn btn-success',
             'data' => [
                 'pjax' => 0,

@@ -5,10 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentBlock */
 
-$this->title = 'Update Content Block: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Content Blocks', 'url' => ['index']];
+$this->title = Yii::t('content', 'Update Content Block: {TITLE}', [
+    'TITLE' => $model->title
+]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('content', 'Content Blocks'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::t('content', 'Update');
 ?>
 <div class="content-block-update">
 

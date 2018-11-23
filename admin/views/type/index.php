@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel pantera\content\admin\models\ContentTypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Content Types';
+$this->title = Yii::t('content', 'Content Types');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-type-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
 
     <p>
-        <?= Html::a('Create Content Type', ['create'], [
+        <?= Html::a(Yii::t('content', 'Create Content Type'), ['create'], [
             'class' => 'btn btn-success',
             'data' => [
                 'pjax' => 0,

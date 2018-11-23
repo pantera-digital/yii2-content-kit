@@ -8,7 +8,6 @@ use pantera\seo\widgets\SeoForm;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentPage */
 /* @var $form yii\widgets\ActiveForm */
@@ -20,7 +19,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'slug')->hint(Html::encode(Module::SLUG_FRONT_PAGE . ' для указания главной страницы')) ?>
+    <?= $form->field($model, 'slug')->hint(Html::encode(Yii::t('content', '{SLUG} to specify the main page', [
+        'SLUG' => Module::SLUG_FRONT_PAGE,
+    ]))) ?>
 
     <?php
     if ($model->editor) {
@@ -53,7 +54,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('content', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

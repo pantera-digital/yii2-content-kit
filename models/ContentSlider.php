@@ -4,6 +4,7 @@ namespace pantera\content\models;
 
 use pantera\media\behaviors\MediaUploadBehavior;
 use pantera\media\models\Media;
+use Yii;
 
 /**
  * This is the model class for table "{{%content_slider}}".
@@ -32,8 +33,8 @@ class ContentSlider extends \yii\db\ActiveRecord
     public function getStatusList(): array
     {
         return [
-            self::STATUS_ACTIVE => 'Опубликован',
-            self::STATUS_NOT_ACTIVE => 'Черновик',
+            self::STATUS_ACTIVE => Yii::t('content', 'Published'),
+            self::STATUS_NOT_ACTIVE => Yii::t('content', 'Draft'),
         ];
     }
 
@@ -86,9 +87,12 @@ class ContentSlider extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'url' => 'Url',
-            'status' => 'Status',
+            'title' => Yii::t('content', 'Title'),
+            'url' => Yii::t('content', 'Url'),
+            'status' => Yii::t('content', 'Status'),
+            'row_1' => Yii::t('content', 'Row 1'),
+            'row_2' => Yii::t('content', 'Row 2'),
+            'row_3' => Yii::t('content', 'Row 3'),
         ];
     }
 

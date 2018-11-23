@@ -2,12 +2,15 @@
 
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentPage */
 
-$this->title = 'Create ' . $model->type->name;
-$this->params['breadcrumbs'][] = ['label' => 'Content Pages ' . $model->type->name, 'url' => ['index', 'key' =>  $model->type->key]];
+$this->title = Yii::t('content', 'Create {NAME}', [
+    'NAME' => $model->type->name
+]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('content', 'Content Pages {NAME}', [
+    'NAME' => $model->type->name
+]), 'url' => ['index', 'key' => $model->type->key]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-page-create">
