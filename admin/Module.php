@@ -20,13 +20,6 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-        if (!isset(Yii::$app->get('i18n')->translations['content'])) {
-            Yii::$app->get('i18n')->translations['content'] = [
-                'class' => PhpMessageSource::class,
-                'basePath' => __DIR__ . '/messages',
-                'sourceLanguage' => 'en-US'
-            ];
-        }
         ModuleAsset::register(Yii::$app->view);
     }
 

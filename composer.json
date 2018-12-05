@@ -15,5 +15,8 @@
     "psr-4": {
       "pantera\\content\\": ""
     }
+  },
+  "extra": {
+    "bootstrap": "pantera\\content\\Bootstrap"
   }
 }
