@@ -27,7 +27,7 @@ class Bootstrap implements BootstrapInterface
         if (!isset($app->get('i18n')->translations['content'])) {
             $app->get('i18n')->translations['content'] = [
                 'class' => PhpMessageSource::class,
-                'basePath' => __DIR__ . '/messages',
+                'basePath' => __DIR__ . '/admin/messages',
                 'sourceLanguage' => 'en-US'
             ];
         }
