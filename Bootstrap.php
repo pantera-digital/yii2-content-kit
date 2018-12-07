@@ -26,15 +26,17 @@ class Bootstrap implements BootstrapInterface
     public function bootstrap($app)
     {
         $this->module = $app->getModule('content');
-        if (!isset($app->get('i18n')->translations['content'])) {
-            $app->get('i18n')->translations['content'] = [
-                'class' => PhpMessageSource::class,
-                'basePath' => __DIR__ . '/admin/messages',
-                'sourceLanguage' => 'en-US'
-            ];
-        }
-        if (property_exists($this->module, 'urlRules')) {
-            $this->addUrlConfig();
+        if ($this->module) {
+            if (!isset($app->get('i18n')->translations['content'])) {
+                $app->get('i18n')->translations['content'] = [
+                    'class' => PhpMessageSource::class,
+                    'basePath' => __DIR__ . '/admin/messages',
+                    'sourceLanguage' => 'en-US'
+                ];
+            }
+            if (property_exists($this->module, 'urlRules')) {
+                $this->addUrlConfig();
+            }
         }
     }
 
