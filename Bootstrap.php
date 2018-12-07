@@ -12,10 +12,11 @@ use Yii;
 use yii\base\Application;
 use yii\base\BootstrapInterface;
 use yii\i18n\PhpMessageSource;
-use yii\swiftmailer\Mailer;
 
 class Bootstrap implements BootstrapInterface
 {
+    /* @var Module|\pantera\content\admin\Module */
+    public $module;
 
     /**
      * Bootstrap method to be called during application bootstrap stage.
@@ -24,6 +25,7 @@ class Bootstrap implements BootstrapInterface
      */
     public function bootstrap($app)
     {
+        $this->module = $app->getModule('content');
         if (!isset($app->get('i18n')->translations['content'])) {
             $app->get('i18n')->translations['content'] = [
                 'class' => PhpMessageSource::class,
@@ -31,5 +33,18 @@ class Bootstrap implements BootstrapInterface
                 'sourceLanguage' => 'en-US'
             ];
         }
+        if (property_exists($this->module, 'urlRules')) {
+            $this->addUrlConfig();
+        }
+    }
+
+    protected function addUrlConfig()
+    {
+        $configUrlRule = [
+            'rules' => $this->module->urlRules,
+        ];
+        $configUrlRule['class'] = 'yii\web\GroupUrlRule';
+        $rule = Yii::createObject($configUrlRule);
+        Yii::$app->urlManager->addRules([$rule], false);
     }
 }

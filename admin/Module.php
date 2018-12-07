@@ -10,12 +10,44 @@ namespace pantera\content\admin;
 
 use pantera\content\models\ContentType;
 use Yii;
-use yii\i18n\PhpMessageSource;
 
 class Module extends \yii\base\Module
 {
     /* @var array Массив ролей которым доступна админка */
     public $permissions = ['@'];
+    public $urlRules = [
+        [
+            'pattern' => 'content/page/file-delete',
+            'route' => 'content/page/file-delete',
+        ],
+        [
+            'pattern' => 'content/page/file-upload/<id>',
+            'route' => 'content/page/file-upload',
+            'defaults' => [
+                'id' => null,
+            ],
+        ],
+        [
+            'pattern' => 'content/page/<key>',
+            'route' => 'content/page/index',
+        ],
+        [
+            'pattern' => 'content/page/<key>/create',
+            'route' => 'content/page/create',
+        ],
+        [
+            'pattern' => 'content/page/<key>/update/<id>',
+            'route' => 'content/page/update',
+        ],
+        [
+            'pattern' => 'content/page/<key>/view/<id>',
+            'route' => 'content/page/view',
+        ],
+        [
+            'pattern' => 'content/page/<key>/delete/<id>',
+            'route' => 'content/page/delete',
+        ]
+    ];
 
     public function init()
     {
