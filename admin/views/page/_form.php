@@ -22,7 +22,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'slug')->hint(Html::encode(Yii::t('content', '{SLUG} to specify the main page', [
         'SLUG' => Module::SLUG_FRONT_PAGE,
     ]))) ?>
-
+    <?= $form->field($model, 'created_at')->widget(\kartik\widgets\DateTimePicker::className(),[
+        'model' => $model,
+        'attribute' => 'created_at',
+    ]) ?>
     <?php
     if ($model->editor) {
         echo $form->field($model, 'body')->widget(CKEditor::className(), [
@@ -50,9 +53,7 @@ use yii\widgets\ActiveForm;
         'model' => $model,
         'form' => $form,
     ]) ?>
-
     <?= $form->field($model, 'status')->checkbox() ?>
-
     <div class="form-group">
         <?= Html::submitButton(Yii::t('content', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
