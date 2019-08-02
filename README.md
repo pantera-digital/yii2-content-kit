@@ -47,6 +47,8 @@ php yii migrate --migrationPath=vendor/pantera-digital/yii2-content-kit/migratio
 ```
 php yii migrate
 ```
+### Настроить модуль Media 
+https://github.com/pantera-digital/yii2-media - здесь описание настройки
 
 ### Сконфигурировать модули frontend и backend
 
