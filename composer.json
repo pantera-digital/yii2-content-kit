@@ -9,7 +9,8 @@
     "2amigos/yii2-ckeditor-widget": "~2.1",
     "bower-asset/sweetalert2": "*",
     "bower-asset/owl.carousel": "*",
-    "mihaildev/yii2-elfinder": "*"
+    "mihaildev/yii2-elfinder": "*",
+    "kartik-v/yii2-widget-datetimepicker": "*"
   },
   "autoload": {
     "psr-4": {
