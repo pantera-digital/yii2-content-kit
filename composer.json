@@ -10,7 +10,7 @@
     "bower-asset/sweetalert2": "*",
     "bower-asset/owl.carousel": "*",
     "mihaildev/yii2-elfinder": "*",
-    "kartik-v/yii2-widget-datetimepicker": "*"
+    "kartik-v/yii2-widgets": "*"
   },
   "autoload": {
     "psr-4": {
