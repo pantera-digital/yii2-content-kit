@@ -1,12 +1,8 @@
 <?php
 
-use dosamigos\ckeditor\CKEditor;
-use mihaildev\elfinder\ElFinder;
-use pantera\content\Module;
-use pantera\media\widgets\innostudio\MediaUploadWidgetInnostudio;
-use pantera\seo\widgets\SeoForm;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\bootstrap\Tabs;
 
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentPage */
@@ -17,43 +13,35 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $this->context->module->useSeo ?
 
-    <?= $form->field($model, 'slug')->hint(Html::encode(Yii::t('content', '{SLUG} to specify the main page', [
-        'SLUG' => Module::SLUG_FRONT_PAGE,
-    ]))) ?>
-    <?= $form->field($model, 'created_at')->widget(\kartik\widgets\DateTimePicker::className(),[
-        'model' => $model,
-        'attribute' => 'created_at',
-    ]) ?>
-    <?php
-    if ($model->editor) {
-        echo $form->field($model, 'body')->widget(CKEditor::className(), [
-            'preset' => 'full',
-            'clientOptions' => ElFinder::ckeditorOptions('elfinder', []),
-        ]);
-    } else {
-        echo $form->field($model, 'body')->textarea(['rows' => 20]);
-    }
+        Tabs::widget([
+            'items' => [
+                [
+                    'label' => 'Основное',
+                    'content' => $this->render('_form_common', [
+                        'form' => $form,
+                        'model' => $model,
+                    ]),
+                ],
+                [
+                    'label' => 'SEO',
+                    'content' => \pantera\seo\widgets\SeoForm::widget([
+                        'form' => $form,
+                        'model' => $model,
+                    ]),
+                ],
+            ],
+        ])
+
+        : $this->render('_form_common', [
+            'form' => $form,
+            'model' => $model,
+        ])
     ?>
 
-    <?= $form->field($model, 'editor')->checkbox() ?>
-
-    <?= MediaUploadWidgetInnostudio::widget([
-        'model' => $model,
-        'bucket' => 'media',
-        'urlUpload' => ['file-upload', 'id' => $model->id],
-        'urlDelete' => ['file-delete'],
-        'pluginOptions' => [
-            'limit' => 1,
-        ],
-    ]) ?>
-
-    <?= SeoForm::widget([
-        'model' => $model,
-        'form' => $form,
-    ]) ?>
     <?= $form->field($model, 'status')->checkbox() ?>
+
     <div class="form-group">
         <?= Html::submitButton(Yii::t('content', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>

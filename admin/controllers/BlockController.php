@@ -22,6 +22,17 @@ class BlockController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function beforeAction($action)
+    {
+        if (!$this->module->useBlock) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+        return parent::beforeAction($action);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [

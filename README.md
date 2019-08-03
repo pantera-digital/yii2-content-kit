@@ -55,14 +55,18 @@ https://github.com/pantera-digital/yii2-media - здесь описание на
 Добавить в конфиг frontend приложения
 ```
     'content' => [
-        'class' => \pantera\content\Module::className(),
+        'class' => \pantera\content\Module::class,
     ],
 ```
 Добавить в конфиг backend приложения
 ```
     'content' => [
-        'class' => \pantera\content\admin\Module::className(),
+        'class' => \pantera\content\admin\Module::class,
         'permissions' => ['admin'],
+        'useBlock' => true,     // по умолчанию true
+        'useSlider' => true,    // по умолчанию true
+        'useMedia' => true,     // по умолчанию true
+        'useSeo' => true,       // по умолчанию true
     ],
 ```
 
