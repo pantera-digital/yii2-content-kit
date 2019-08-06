@@ -16,10 +16,10 @@ class ModuleAsset extends AssetBundle
     public $sourcePath = __DIR__ . '/assets';
 
     public $js = [
-        'pantera-content-kit.js',
+        'js/script.js',
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
+        SweetAlertAsset::class,
     ];
 }

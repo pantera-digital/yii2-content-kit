@@ -5,7 +5,11 @@ $(document).on('click', '.content-ajax-delete', function () {
             if (result.status) {
                 window.location.href = result.url;
             } else {
-                alert('Ошибка. '+ result.message);
+                Swal({
+                    title: 'Ошибка',
+                    text: result.message,
+                    type: 'warning',
+                })
             }
         });
     }

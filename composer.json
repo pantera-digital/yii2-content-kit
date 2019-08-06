@@ -5,6 +5,7 @@
     "php": ">=7.0.0",
     "yiisoft/yii2": "~2.0.6",
     "2amigos/yii2-ckeditor-widget": "~2.1",
+    "bower-asset/sweetalert2": "*",
     "bower-asset/owl.carousel": "*",
     "mihaildev/yii2-elfinder": "*",
     "kartik-v/yii2-widgets": "*"
