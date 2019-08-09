@@ -2,12 +2,6 @@
 
 namespace pantera\content\models;
 
-use pantera\media\behaviors\MediaUploadBehavior;
-use pantera\media\models\Media;
-use pantera\seo\behaviors\SeoFields;
-use pantera\seo\behaviors\SlugBehavior;
-use pantera\seo\models\Seo;
-use pantera\seo\validators\SlugValidator;
 use Yii;
 
 /**
@@ -22,8 +16,8 @@ use Yii;
  * @property string $editor
  *
  * @property ContentType $type
- * @property Media $media
- * @property Seo $seo
+ * @property pantera\media\models\Media $media
+ * @property pantera\seo\models\Seo $seo
  *
  * @method bool slugCompare($slug)
  */
@@ -84,22 +78,29 @@ class ContentPage extends \yii\db\ActiveRecord
 
     public function behaviors()
     {
-        return [
-            [
-                'class' => SeoFields::className(),
-            ],
-            [
-                'class' => MediaUploadBehavior::className(),
+        $behaviors = parent::behaviors();
+        
+        if (Yii::$app->getModule('content') && Yii::$app->getModule('content')->useSeo) {
+            $behaviors[] = [
+                'class' => \pantera\seo\behaviors\SeoFields::class,
+            ];
+            $behaviors[] = [
+                'class' => \pantera\seo\behaviors\SlugBehavior::class,
+                'attribute' => 'title',
+                'slugAttribute' => 'slug',
+            ];
+        }
+        
+        if (Yii::$app->getModule('content') && Yii::$app->getModule('content')->useMedia) {
+            $behaviors[] = [
+                'class' => \pantera\media\behaviors\MediaUploadBehavior::class,
                 'buckets' => [
                     'media' => [],
                 ],
-            ],
-            [
-                'class' => SlugBehavior::className(),
-                'attribute' => 'title',
-                'slugAttribute' => 'slug',
-            ],
-        ];
+            ];
+        }
+
+        return $behaviors;
     }
 
     /**
@@ -107,7 +108,7 @@ class ContentPage extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
+        $rules = [
             [['title', 'type_id'], 'required'],
             [['body'], 'string'],
             [['type_id'], 'integer'],
@@ -122,9 +123,16 @@ class ContentPage extends \yii\db\ActiveRecord
                 'targetClass' => ContentType::class,
                 'targetAttribute' => ['type_id' => 'id']
             ],
-            [['slug'], SlugValidator::className(), 'skipOnEmpty' => false],
             [['editor'], 'integer'],
         ];
+
+        if (Yii::$app->getModule('content') && Yii::$app->getModule('content')->useSeo) {
+            $rules[] = [
+                ['slug'], \pantera\seo\validators\SlugValidator::class, 'skipOnEmpty' => false,
+            ];
+        }
+
+        return $rules;
     }
 
     /**
