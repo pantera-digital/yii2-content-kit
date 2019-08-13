@@ -2,7 +2,6 @@
 
 namespace pantera\content\models;
 
-use function var_dump;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -29,15 +28,18 @@ class ContentPageSearch extends ContentPage
 
     /**
      * Поиск записей по ключу типа
-     * @param string $key Ключ типа
+     * @param string|array $types Ключ типа
      * @return ActiveDataProvider
      */
-    public function search(string $key): ActiveDataProvider
+    public function search($types): ActiveDataProvider
     {
+        if (!is_array($types)) {
+            $types = [$types];
+        }
         $query = ContentPage::find()
             ->joinWith(['type'])
             ->isActive()
-            ->andWhere(['=', ContentType::tableName() . '.key', $key]);
+            ->andWhere([ContentType::tableName() . '.key' => $types]);
         return new ActiveDataProvider([
             'query' => $query,
             'sort' => [
