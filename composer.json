@@ -8,7 +8,8 @@
     "bower-asset/sweetalert2": "*",
     "bower-asset/owl.carousel": "*",
     "mihaildev/yii2-elfinder": "*",
-    "kartik-v/yii2-widgets": "*"
+    "kartik-v/yii2-widgets": "*",
+    "alexandernst/yii2-device-detect": "*"
   },
   "autoload": {
     "psr-4": {

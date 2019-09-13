@@ -33,6 +33,16 @@ use yii\widgets\ActiveForm;
         ],
     ]) ?>
 
+    <?= MediaUploadWidgetInnostudio::widget([
+        'model' => $model,
+        'bucket' => 'mediaSmall',
+        'urlUpload' => ['file-upload', 'id' => $model->id],
+        'urlDelete' => ['file-delete'],
+        'pluginOptions' => [
+            'limit' => 1,
+        ],
+    ]) ?>
+
     <?= $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">

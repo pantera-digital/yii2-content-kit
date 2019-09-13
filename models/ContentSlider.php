@@ -5,6 +5,7 @@ namespace pantera\content\models;
 use pantera\media\behaviors\MediaUploadBehavior;
 use pantera\media\models\Media;
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%content_slider}}".
@@ -18,8 +19,9 @@ use Yii;
  * @property string $row_3
  *
  * @property Media $media
+ * @property Media $mediaSmall
  */
-class ContentSlider extends \yii\db\ActiveRecord
+class ContentSlider extends ActiveRecord
 {
     /* @var int Активный статус */
     const STATUS_ACTIVE = 1;
@@ -54,6 +56,7 @@ class ContentSlider extends \yii\db\ActiveRecord
                 'class' => MediaUploadBehavior::class,
                 'buckets' => [
                     'media' => [],
+                    'mediaSmall' => [],
                 ],
             ]
         ];

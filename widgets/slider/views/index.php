@@ -17,15 +17,17 @@ use yii\web\View;
     <?php foreach ($models as $model) : ?>
         <div class="item content-slider__item">
             <?php
-                if ($model->url) {
-                    echo Html::beginTag('a', [
-                        'href' => $model->url,
-                    ]);
-                }
+            if ($model->url) {
+                echo Html::beginTag('a', [
+                    'href' => $model->url,
+                ]);
+            }
             ?>
             <?php
             $img = '';
-            if ($model->media && $model->media->issetMedia()) {
+            if (Yii::$app->devicedetect->isMobile() && $model->mediaSmall && $model->mediaSmall->issetMedia()) {
+                $img = Html::img($model->mediaSmall->getUrl());
+            } elseif ($model->media && $model->media->issetMedia()) {
                 $img = Html::img($model->media->getUrl());
             }
             echo $img;
@@ -52,9 +54,9 @@ use yii\web\View;
                 </div>
             <?php endif; ?>
             <?php
-                if ($model->url) {
-                    echo Html::endTag('a');
-                }
+            if ($model->url) {
+                echo Html::endTag('a');
+            }
             ?>
         </div>
     <?php endforeach; ?>

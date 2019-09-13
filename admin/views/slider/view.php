@@ -50,6 +50,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 },
             ],
+            [
+                'label' => Yii::t('content', 'Image small'),
+                'format' => 'raw',
+                'value' => function (ContentSlider $model) {
+                    if ($model->mediaSmall && $model->mediaSmall->issetMedia()) {
+                        return Html::img($model->mediaSmall->image());
+                    }
+                },
+            ],
         ],
     ]) ?>
 

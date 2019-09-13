@@ -13,6 +13,8 @@ https://github.com/pantera-digital/yii2-seo
 
 Установить и настроить модуль https://github.com/MihailDev/yii2-elfinder
 
+Установить и настроить модуль https://packagist.org/packages/alexandernst/yii2-device-detect
+
 Выполните команду composer:
 ```
 composer require pantera-digital/yii2-content-kit
