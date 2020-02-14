@@ -39,4 +39,7 @@ return [
     'Slug' => 'Псевдоним',
     'Created At' => 'Дата создания',
     '{SLUG} to specify the main page' => '{SLUG} для указания главной страницы',
+    'Favorite' => 'Избранное',
+    'Yes' => 'Да',
+    'No' => 'Нет',
 ];

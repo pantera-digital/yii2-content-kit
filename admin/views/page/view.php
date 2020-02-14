@@ -13,9 +13,9 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('content', 'Content Pages {N
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content-page-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <h1>
+        <?= Html::encode($this->title) ?>
+    </h1>
     <p>
         <?= Html::a(Yii::t('content', 'Update'), [
             'update',
@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -46,8 +45,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'label label-' . ($model->status ? 'success' : 'warning'),
                 ]),
             ],
+            [
+                'attribute' => 'is_favorite',
+                'value' => $model->getFavoriteLabel(),
+            ],
             'created_at',
         ],
     ]) ?>
-
 </div>

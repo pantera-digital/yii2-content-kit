@@ -1,14 +1,18 @@
 <?php
 
+use pantera\content\admin\models\ContentPageSearch;
 use pantera\content\models\ContentPage;
+use yii\data\ActiveDataProvider;
+use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\View;
 use yii\widgets\Pjax;
 
-/* @var $this yii\web\View */
-/* @var $searchModel pantera\content\admin\models\ContentPageSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $this View */
+/* @var $searchModel ContentPageSearch */
+/* @var $dataProvider ActiveDataProvider */
 
 $this->title = Yii::t('content', 'Content Pages {NAME}', [
     'NAME' => $searchModel->type->name
@@ -51,10 +55,20 @@ $this->params['breadcrumbs'][] = $this->title;
                     'prompt' => '---',
                 ]),
             ],
+            [
+                'attribute' => 'is_favorite',
+                'value' => function (ContentPage $model) {
+                    return $model->getFavoriteLabel();
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'is_favorite', $searchModel->getFavoriteLabels(), [
+                    'class' => 'form-control',
+                    'prompt' => '---',
+                ]),
+            ],
             'created_at:datetime',
             [
-                'class' => 'yii\grid\ActionColumn',
-                'urlCreator' => function ($action, ContentPage $model, $key, $index, $column) {
+                'class' => ActionColumn::class,
+                'urlCreator' => function ($action, ContentPage $model) {
                     return Url::toRoute([$action, 'key' => $model->type->key, 'id' => $model->id]);
                 },
             ],

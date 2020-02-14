@@ -1,21 +1,19 @@
 <?php
 
+use pantera\seo\widgets\SeoForm;
+use yii\bootstrap\Tabs;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\bootstrap\Tabs;
 
 /* @var $this yii\web\View */
 /* @var $model pantera\content\models\ContentPage */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
 <div class="content-page-form">
-
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $this->context->module->useSeo ?
-
-        Tabs::widget([
+    <?php
+    if ($this->context->module->useSeo) {
+        echo Tabs::widget([
             'items' => [
                 [
                     'label' => 'Основное',
@@ -26,26 +24,23 @@ use yii\bootstrap\Tabs;
                 ],
                 [
                     'label' => 'SEO',
-                    'content' => \pantera\seo\widgets\SeoForm::widget([
+                    'content' => SeoForm::widget([
                         'form' => $form,
                         'model' => $model,
                     ]),
                 ],
             ],
-        ])
-
-        : $this->render('_form_common', [
+        ]);
+    } else {
+        echo $this->render('_form_common', [
             'form' => $form,
             'model' => $model,
-        ])
+        ]);
+    }
     ?>
-
     <?= $form->field($model, 'status')->checkbox() ?>
-
     <div class="form-group">
         <?= Html::submitButton(Yii::t('content', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
-
     <?php ActiveForm::end(); ?>
-
 </div>

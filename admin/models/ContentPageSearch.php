@@ -17,7 +17,7 @@ class ContentPageSearch extends ContentPage
     public function rules()
     {
         return [
-            [['id', 'type_id', 'status'], 'integer'],
+            [['id', 'type_id', 'status', 'is_favorite'], 'integer'],
             [['title', 'created_at'], 'safe'],
         ];
     }
@@ -66,6 +66,7 @@ class ContentPageSearch extends ContentPage
             'type_id' => $this->type_id,
             'status' => $this->status,
             'created_at' => $this->created_at,
+            'is_favorite' => $this->is_favorite,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title]);
