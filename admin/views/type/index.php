@@ -1,5 +1,6 @@
 <?php
 
+use pantera\content\models\ContentType;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
@@ -32,6 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'key',
+            [
+                'attribute' => 'is_available_full_page',
+                'value' => function (ContentType $model) {
+                    return $model->getIsAvailableFullPageLabel();
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'is_available_full_page', $searchModel->getIsAvailableFullPageLabels(), [
+                    'class' => 'form-control',
+                    'prompt' => '---',
+                ]),
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'buttons' => [

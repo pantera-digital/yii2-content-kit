@@ -35,7 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
-            'slug',
+            [
+                'attribute' => 'slug',
+                'visible' => $model->type->is_available_full_page,
+            ],
             'body:html',
             'type.name',
             [

@@ -16,6 +16,9 @@ use yii\helpers\ArrayHelper;
  */
 class ContentType extends \yii\db\ActiveRecord
 {
+    const IS_AVAILABLE_FULL_PAGE_YES = 1;
+    const IS_AVAILABLE_FULL_PAGE_NO = 0;
+
     /**
      * Получить список типов
      * @return array
@@ -46,7 +49,21 @@ class ContentType extends \yii\db\ActiveRecord
             [['key'], 'match', 'pattern' => '/^[0-9A-Za-z-]*$/'],
             [['key'], 'trim'],
             [['key'], 'unique'],
+            ['is_available_full_page', 'in', 'range' => [self::IS_AVAILABLE_FULL_PAGE_YES, self::IS_AVAILABLE_FULL_PAGE_NO]],
         ];
+    }
+
+    public function getIsAvailableFullPageLabels(): array
+    {
+        return [
+            self::IS_AVAILABLE_FULL_PAGE_YES => Yii::t('content', 'Yes'),
+            self::IS_AVAILABLE_FULL_PAGE_NO => Yii::t('content', 'No'),
+        ];
+    }
+
+    public function getIsAvailableFullPageLabel(): string
+    {
+        return $this->getIsAvailableFullPageLabels()[$this->is_available_full_page];
     }
 
     /**
@@ -58,6 +75,7 @@ class ContentType extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => Yii::t('content', 'Name'),
             'key' => Yii::t('content', 'Key'),
+            'is_available_full_page' => Yii::t('content', 'Is available full page'),
         ];
     }
 

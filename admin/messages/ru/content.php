@@ -42,4 +42,5 @@ return [
     'Favorite' => 'Избранное',
     'Yes' => 'Да',
     'No' => 'Нет',
+    'Is available full page' => 'Детальная страница',
 ];

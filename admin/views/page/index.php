@@ -41,7 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             'title',
-            'slug',
+            [
+                'attribute' => 'slug',
+                'visible' => $searchModel->type->is_available_full_page,
+            ],
             [
                 'attribute' => 'status',
                 'format' => 'html',

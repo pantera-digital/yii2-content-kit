@@ -18,7 +18,7 @@ class ContentTypeSearch extends ContentType
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'is_available_full_page'], 'integer'],
             [['name', 'key'], 'safe'],
         ];
     }
@@ -63,6 +63,7 @@ class ContentTypeSearch extends ContentType
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'is_available_full_page' => $this->is_available_full_page,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

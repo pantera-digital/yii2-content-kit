@@ -59,6 +59,7 @@ class ViewController extends Controller
     {
         $model = ContentPage::find()
             ->isActive()
+            ->isAvailableFullPage()
             ->andWhere(['=', ContentPage::tableName() . '.id', $id])
             ->one();
         if (is_null($model)) {

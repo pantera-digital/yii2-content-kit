@@ -106,10 +106,10 @@ class ContentPage extends ActiveRecord
         $behaviors = parent::behaviors();
         
         if (Yii::$app->getModule('content') && Yii::$app->getModule('content')->useSeo) {
-            $behaviors[] = [
+            $behaviors['seoFieldsBehavior'] = [
                 'class' => SeoFields::class,
             ];
-            $behaviors[] = [
+            $behaviors['slugBehavior'] = [
                 'class' => SlugBehavior::class,
                 'attribute' => 'title',
                 'slugAttribute' => 'slug',
@@ -191,6 +191,11 @@ class ContentPage extends ActiveRecord
     {
         if ($insert) {
             $this->setCreatedAt();
+        }
+        // не используем seo-поведения, если они выключены для типа
+        if (!$this->type->is_available_full_page) {
+            $this->detachBehavior('seoFieldsBehavior');
+            $this->detachBehavior('slugBehavior');
         }
         return parent::beforeSave($insert);
     }

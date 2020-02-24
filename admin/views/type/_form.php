@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'key')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'is_available_full_page')->checkbox() ?>
+
     <div class="form-group">
         <?= Html::submitButton(Yii::t('content', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>

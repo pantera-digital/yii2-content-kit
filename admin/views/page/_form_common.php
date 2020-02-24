@@ -44,10 +44,12 @@ use yii\widgets\ActiveForm;
         }
         ?>
         <?php
-        $hint = Yii::t('content', '{frontpage_slug} to specify the main page', [
-            'frontpage_slug' => Module::SLUG_FRONT_PAGE,
-        ]);
-        echo $form->field($model, 'slug')->hint(Html::encode($hint));
+        if ($model->type->is_available_full_page) {
+            $hint = Yii::t('content', '{frontpage_slug} to specify the main page', [
+                'frontpage_slug' => Module::SLUG_FRONT_PAGE,
+            ]);
+            echo $form->field($model, 'slug')->hint(Html::encode($hint));
+        }
         ?>
         <?= $form->field($model, 'is_favorite')->checkbox() ?>
         <?= $form->field($model, 'created_at')->widget(DateTimePicker::class,[

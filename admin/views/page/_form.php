@@ -12,7 +12,10 @@ use yii\widgets\ActiveForm;
 <div class="content-page-form">
     <?php $form = ActiveForm::begin(); ?>
     <?php
-    if ($this->context->module->useSeo) {
+    if (
+        $this->context->module->useSeo &&
+        $model->type->is_available_full_page
+    ) {
         echo Tabs::widget([
             'items' => [
                 [

@@ -1,5 +1,6 @@
 <?php
 
+use pantera\content\models\ContentType;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -27,6 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'key',
+            [
+                'attribute' => 'is_available_full_page',
+                'value' => function (ContentType $model) {
+                    return $model->getIsAvailableFullPageLabel();
+                },
+            ],
         ],
     ]) ?>
 
