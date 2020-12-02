@@ -21,7 +21,9 @@ use yii\widgets\ActiveForm;
         if ($model->editor) {
             echo $form->field($model, 'body')->widget(CKEditor::class, [
                 'preset' => 'full',
-                'clientOptions' => ElFinder::ckeditorOptions('elfinder', []),
+                'clientOptions' => ElFinder::ckeditorOptions('elfinder', [
+                    'allowedContent' => true,
+                ]),
             ]);
         } else {
             echo $form->field($model, 'body')->textarea(['rows' => 20]);
