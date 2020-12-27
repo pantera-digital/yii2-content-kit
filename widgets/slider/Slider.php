@@ -25,6 +25,7 @@ class Slider extends Widget
         parent::run();
         $models = ContentSlider::find()
             ->isActive()
+            ->orderBy('sort')
             ->all();
         $this->options['id'] = $this->getId();
         Html::addCssClass($this->options, 'carousel');

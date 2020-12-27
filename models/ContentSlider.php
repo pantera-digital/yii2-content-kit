@@ -77,7 +77,7 @@ class ContentSlider extends ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['status'], 'integer'],
+            [['status', 'sort'], 'integer'],
             [['title', 'url'], 'string', 'max' => 255],
             [['row_1', 'row_2', 'row_3'], 'string'],
         ];
@@ -93,6 +93,7 @@ class ContentSlider extends ActiveRecord
             'title' => Yii::t('content', 'Title'),
             'url' => Yii::t('content', 'Url'),
             'status' => Yii::t('content', 'Status'),
+            'sort' => 'Позиция',
             'row_1' => Yii::t('content', 'Row 1'),
             'row_2' => Yii::t('content', 'Row 2'),
             'row_3' => Yii::t('content', 'Row 3'),
